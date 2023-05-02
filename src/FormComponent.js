@@ -10,7 +10,13 @@ import {
 import { map } from "lodash";
 import React from "react";
 
-const FormComponent = ({ fields, title, changeHandler, state }) => {
+const FormComponent = ({
+  fields,
+  title,
+  changeHandler,
+  state,
+  additionalProps,
+}) => {
   const createField = (field) => {
     const {
       title,
@@ -25,7 +31,7 @@ const FormComponent = ({ fields, title, changeHandler, state }) => {
     if (type === "select") {
       return (
         <>
-          <InputLabel>Select Thingy</InputLabel>
+          <InputLabel>{title}</InputLabel>
           <Select
             label={title}
             style={{ width: "100vh", ...style }}
@@ -34,6 +40,7 @@ const FormComponent = ({ fields, title, changeHandler, state }) => {
               changeHandler({ ...state, [field.state]: e.target.value });
             }}
             value={state[field.state]}
+            {...additionalProps}
           >
             {map(field.options, (option) => {
               const { value, label } = option;
@@ -54,6 +61,7 @@ const FormComponent = ({ fields, title, changeHandler, state }) => {
           onChange={(e) => {
             changeHandler({ ...state, [field.state]: e.target.value });
           }}
+          {...additionalProps}
         />
       );
     }

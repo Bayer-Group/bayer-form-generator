@@ -22,12 +22,27 @@ const SubmissionForm = () => {
       state: "labId",
     },
     {
-      title: "Lab Submission Name",
+      title: "Submission Type",
+      options: [
+        {
+          label: "Cool Submission Type",
+          value: "cool",
+        },
+        {
+          label: "Less Cool Submission Type",
+          value: "lessCool",
+        },
+      ],
+      type: "select",
+      state: "submissionType",
+    },
+    {
+      title: "Submission Name",
       type: "text",
       style: {
         backgroundColor: "lightgreen",
       },
-      state: "labSubmissionName",
+      state: "submissionName",
     },
     {
       title: "Owners",

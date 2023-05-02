@@ -19,3 +19,5 @@
 `state` - the state to be updated when the value of the component changes. String.
 
 `changeHandler` - a function to be called when the value of the component changes. Function.
+
+`additionalProps` - add additional props that are not explicitly supported by this library but by the underlying component. Object
