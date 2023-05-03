@@ -72,6 +72,7 @@ const MaterialDetails = () => {
       changeHandler={setStuff}
       fields={materialDetailsDefinition}
       title="Material Details"
+      containerStyle={{ marginTop: "-1rem" }}
     />
   );
 };
