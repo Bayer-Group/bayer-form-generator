@@ -1,11 +1,11 @@
-import { Select, MenuItem, InputLabel } from "@mui/material";
+import { Select, MenuItem, InputLabel, Box, FormControl } from "@mui/material";
 import React, { useState } from "react";
 import FormComponent from "./FormComponent";
 
-const SubmissionForm = () => {
+const RequestorDetails = () => {
   const [stuff, setStuff] = useState({});
 
-  const submissionFormDefinition = [
+  const requestorDetailsDefinition = [
     {
       title: "Lab ID",
       options: [
@@ -48,35 +48,36 @@ const SubmissionForm = () => {
       title: "Owners",
       type: "select",
       componentOverride: (
-        <>
-          <InputLabel>Select Thingy</InputLabel>
-          <Select
-            label="Owners"
-            variant="outlined"
-            style={{ width: "100vh" }}
-            onChange={(e) => {
-              setStuff({ ...stuff, owners: e.target.value });
-            }}
-            value={stuff.owners}
-          >
-            <MenuItem value="cathy">Cathy</MenuItem>
-            <MenuItem value="fry">Fry</MenuItem>
-            <MenuItem value="lily">Lily</MenuItem>
-          </Select>
-        </>
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            <InputLabel>Select Thingy</InputLabel>
+            <Select
+              label="Owners"
+              variant="outlined"
+              style={{ width: "100vh" }}
+              onChange={(e) => {
+                setStuff({ ...stuff, owners: e.target.value });
+              }}
+              value={stuff.owners}
+            >
+              <MenuItem value="cathy">Cathy</MenuItem>
+              <MenuItem value="fry">Fry</MenuItem>
+              <MenuItem value="lily">Lily</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
       ),
       state: "owners",
     },
   ];
-  console.log("stuff", stuff);
   return (
     <FormComponent
       state={stuff}
       changeHandler={setStuff}
-      fields={submissionFormDefinition}
+      fields={requestorDetailsDefinition}
       title="Requestor Details"
     />
   );
 };
 
-export default SubmissionForm;
+export default RequestorDetails;

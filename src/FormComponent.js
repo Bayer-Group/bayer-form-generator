@@ -6,6 +6,8 @@ import {
   Select,
   MenuItem,
   InputLabel,
+  Box,
+  FormControl,
 } from "@mui/material";
 import { map } from "lodash";
 import React from "react";
@@ -30,24 +32,26 @@ const FormComponent = ({
     }
     if (type === "select") {
       return (
-        <>
-          <InputLabel>{title}</InputLabel>
-          <Select
-            label={title}
-            style={{ width: "100vh", ...style }}
-            disabled={disabled}
-            onChange={(e) => {
-              changeHandler({ ...state, [field.state]: e.target.value });
-            }}
-            value={state[field.state]}
-            {...additionalProps}
-          >
-            {map(field.options, (option) => {
-              const { value, label } = option;
-              return <MenuItem value={value}>{label}</MenuItem>;
-            })}
-          </Select>
-        </>
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            <InputLabel>{title}</InputLabel>
+            <Select
+              label={title}
+              style={{ width: "100vh", ...style }}
+              disabled={disabled}
+              onChange={(e) => {
+                changeHandler({ ...state, [field.state]: e.target.value });
+              }}
+              value={state[field.state]}
+              {...additionalProps}
+            >
+              {map(field.options, (option) => {
+                const { value, label } = option;
+                return <MenuItem value={value}>{label}</MenuItem>;
+              })}
+            </Select>
+          </FormControl>
+        </Box>
       );
     }
     if (type === "text") {
