@@ -84,6 +84,7 @@ const FormComponent = ({
           {map(fields, (field, index) => {
             const bottomPadding =
               index === fields.length - 1 ? "0rem" : "0.5rem";
+            if (field.hidden) return <></>;
             return (
               <Grid
                 item

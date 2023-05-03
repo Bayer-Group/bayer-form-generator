@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import FormComponent from "./FormComponent";
 
-const MaterialDetails = () => {
-  const [stuff, setStuff] = useState({});
-
+const MaterialDetails = ({ state, setState }) => {
   const materialDetailsDefinition = [
     {
       title: "Crop",
@@ -49,6 +47,7 @@ const MaterialDetails = () => {
       ],
       type: "select",
       state: "sampleType",
+      hidden: true,
     },
     {
       title: "Compliance Type",
@@ -68,8 +67,8 @@ const MaterialDetails = () => {
   ];
   return (
     <FormComponent
-      state={stuff}
-      changeHandler={setStuff}
+      state={state}
+      changeHandler={setState}
       fields={materialDetailsDefinition}
       title="Material Details"
       containerStyle={{ marginTop: "-1rem" }}

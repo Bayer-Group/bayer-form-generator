@@ -1,10 +1,8 @@
 import { Select, MenuItem, InputLabel, Box, FormControl } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import FormComponent from "./FormComponent";
 
-const RequestorDetails = () => {
-  const [stuff, setStuff] = useState({});
-
+const RequestorDetails = ({ state, setState }) => {
   const requestorDetailsDefinition = [
     {
       title: "Lab ID",
@@ -56,9 +54,9 @@ const RequestorDetails = () => {
               variant="outlined"
               style={{ width: "100vh" }}
               onChange={(e) => {
-                setStuff({ ...stuff, owners: e.target.value });
+                setState({ ...state, owners: e.target.value });
               }}
-              value={stuff.owners}
+              value={state.owners}
             >
               <MenuItem value="cathy">Cathy</MenuItem>
               <MenuItem value="fry">Fry</MenuItem>
@@ -72,8 +70,8 @@ const RequestorDetails = () => {
   ];
   return (
     <FormComponent
-      state={stuff}
-      changeHandler={setStuff}
+      state={state}
+      changeHandler={setState}
       fields={requestorDetailsDefinition}
       title="Requestor Details"
     />
