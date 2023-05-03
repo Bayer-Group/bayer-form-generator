@@ -41,7 +41,7 @@ const FormComponent = ({
             <InputLabel>{title}</InputLabel>
             <Select
               label={title}
-              style={{ width: "100vh", disabledStyle, ...style }}
+              style={{ width: "100vh", ...disabledStyle, ...style }}
               disabled={disabled}
               onChange={(e) => {
                 changeHandler({ ...state, [field.state]: e.target.value });
@@ -62,7 +62,7 @@ const FormComponent = ({
         <TextField
           label={title}
           variant="outlined"
-          style={{ ...style }}
+          style={{ ...disabledStyle, ...style }}
           disabled={disabled}
           value={state[field.state]}
           onChange={(e) => {
@@ -76,7 +76,7 @@ const FormComponent = ({
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             label={title}
-            style={{ ...style }}
+            style={{ ...disabledStyle, ...style }}
             disabled={disabled}
             value={state[field.state]}
             onChange={(e) => {
