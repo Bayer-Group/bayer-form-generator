@@ -33,6 +33,7 @@ const RequestorDetails = ({ state, setState }) => {
       ],
       type: "select",
       state: "submissionType",
+      disabled: true,
     },
     {
       title: "Submission Name",

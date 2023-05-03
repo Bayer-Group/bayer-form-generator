@@ -11,6 +11,9 @@ import {
 } from "@mui/material";
 import { map } from "lodash";
 import React from "react";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 const FormComponent = ({
   fields,
@@ -18,7 +21,6 @@ const FormComponent = ({
   changeHandler,
   state,
   containerStyles,
-  additionalProps,
 }) => {
   const createField = (field) => {
     const {
@@ -28,6 +30,7 @@ const FormComponent = ({
       style = {},
       disabled = false,
     } = field;
+    const disabledStyle = disabled ? { backgroundColor: "#f5f5f5" } : {};
     if (componentOverride) {
       return componentOverride;
     }
@@ -38,13 +41,12 @@ const FormComponent = ({
             <InputLabel>{title}</InputLabel>
             <Select
               label={title}
-              style={{ width: "100vh", ...style }}
+              style={{ width: "100vh", disabledStyle, ...style }}
               disabled={disabled}
               onChange={(e) => {
                 changeHandler({ ...state, [field.state]: e.target.value });
               }}
               value={state[field.state]}
-              {...additionalProps}
             >
               {map(field.options, (option) => {
                 const { value, label } = option;
@@ -66,8 +68,22 @@ const FormComponent = ({
           onChange={(e) => {
             changeHandler({ ...state, [field.state]: e.target.value });
           }}
-          {...additionalProps}
         />
+      );
+    }
+    if (type === "date") {
+      return (
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            label={title}
+            style={{ ...style }}
+            disabled={disabled}
+            value={state[field.state]}
+            onChange={(e) => {
+              changeHandler({ ...state, [field.state]: e });
+            }}
+          />
+        </LocalizationProvider>
       );
     }
   };
