@@ -12,7 +12,7 @@
 
 `style` - styles to be added onto the component type. Object.
 
-`containerStyle` - styles to be added onto the container (Grid) component. Object.
+`containerStyles` - styles to be added onto the container (Grid) component. Object. This option is available both on a component basis and a field basis.
 
 `componentOverride` - a component to be used instead of the default component for a given type. React Component.
 
@@ -21,3 +21,5 @@
 `changeHandler` - a function to be called when the value of the component changes. Function.
 
 `additionalProps` - add additional props that are not explicitly supported by this library but by the underlying component. Object
+
+`hidden` - Hide the given field. Boolean

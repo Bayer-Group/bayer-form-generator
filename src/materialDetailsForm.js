@@ -71,7 +71,7 @@ const MaterialDetails = ({ state, setState }) => {
       changeHandler={setState}
       fields={materialDetailsDefinition}
       title="Material Details"
-      containerStyle={{ marginTop: "-1rem" }}
+      containerStyles={{ marginTop: "-1rem" }}
     />
   );
 };

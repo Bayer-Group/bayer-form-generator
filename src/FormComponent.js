@@ -17,7 +17,7 @@ const FormComponent = ({
   title,
   changeHandler,
   state,
-  containerStyle,
+  containerStyles,
   additionalProps,
 }) => {
   const createField = (field) => {
@@ -74,7 +74,7 @@ const FormComponent = ({
 
   return (
     <div style={{ padding: "1rem" }}>
-      <Paper elevation={1} style={{ padding: "0.5rem", ...containerStyle }}>
+      <Paper elevation={1} style={{ padding: "0.5rem", ...containerStyles }}>
         <Grid container spacing={1} style={{ padding: "0.5rem" }}>
           {title && (
             <Typography variant="h6" style={{ marginLeft: "0.6rem" }}>
@@ -91,7 +91,7 @@ const FormComponent = ({
                 xs={12}
                 style={{
                   paddingBottom: bottomPadding,
-                  ...field.containerStyle,
+                  ...field.containerStyles,
                 }}
               >
                 {createField(field)}
