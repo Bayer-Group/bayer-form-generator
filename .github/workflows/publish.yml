@@ -12,7 +12,7 @@ jobs:
     runs-on: [self-hosted, Linux, external-k8s]
     environment: "non_production"
     env:
-      INPUT_TOKEN: ${{ secrets.ARTIFACTORY_AUTH }}
+      INPUT_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
 
     strategy:
       matrix:
@@ -36,7 +36,7 @@ jobs:
 
       - name: Configure NPM
         env:
-          ARTIFACTORY_TOKEN: ${{secrets.ARTIFACTORY_AUTH}}
+          ARTIFACTORY_TOKEN: ${{secrets.ARTIFACTORY_TOKEN}}
         run: |
           npm config set registry https://registry.npmjs.org/
           npm config set @monsantoit:registry https://artifactory.bayer.com/artifactory/api/npm/npm-platforms-engineering/
@@ -76,7 +76,7 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           registry: https://artifactory.bayer.com/artifactory/api/npm/npm-platforms-engineering/
-          token: ${{secrets.ARTIFACTORY_AUTH}}
+          token: ${{secrets.ARTIFACTORY_TOKEN}}
 
       - name: Git Tag
         run: |
