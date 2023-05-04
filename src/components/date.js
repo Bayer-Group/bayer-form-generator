@@ -11,12 +11,13 @@ const DateComponent = ({
   changeHandler,
 }) => {
   //todo: figure out how to disable this noticeably
-  const disabledStyle = disabled ? { backgroundColor: "red" } : {};
+  const disabledStyle = disabled ? "Disabled-Date" : "";
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
+        className={disabledStyle}
         label={title}
-        style={{ ...disabledStyle, ...style }}
+        style={{ ...style }}
         disabled={disabled}
         value={state[field.state]}
         onChange={(e) => {
