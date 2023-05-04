@@ -18,6 +18,7 @@ function ExampleForm() {
             ...formData,
             hideTextbox: !formData.hideTextbox,
             hideSelect: !formData.hideSelect,
+            hideDate: !formData.hideDate,
           });
         }}
       >
