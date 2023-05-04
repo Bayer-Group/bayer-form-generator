@@ -1,19 +1,9 @@
-import {
-  Grid,
-  Paper,
-  Typography,
-  TextField,
-  Select,
-  MenuItem,
-  InputLabel,
-  Box,
-  FormControl,
-} from "@mui/material";
+import { Grid, Paper, Typography } from "@mui/material";
 import { map } from "lodash";
 import React from "react";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import DateComponent from "./components/date";
+import TextComponent from "./components/text";
+import SelectComponent from "./components/select";
 
 const FormComponent = ({
   fields,
@@ -36,54 +26,40 @@ const FormComponent = ({
     }
     if (type === "select") {
       return (
-        <Box sx={{ minWidth: 120 }}>
-          <FormControl fullWidth>
-            <InputLabel>{title}</InputLabel>
-            <Select
-              label={title}
-              style={{ width: "100vh", ...disabledStyle, ...style }}
-              disabled={disabled}
-              onChange={(e) => {
-                changeHandler({ ...state, [field.state]: e.target.value });
-              }}
-              value={state[field.state]}
-            >
-              {map(field.options, (option) => {
-                const { value, label } = option;
-                return <MenuItem value={value}>{label}</MenuItem>;
-              })}
-            </Select>
-          </FormControl>
-        </Box>
+        <SelectComponent
+          title={title}
+          field={field}
+          disabled={disabled}
+          disabledStyle={disabledStyle}
+          style={style}
+          state={state}
+          changeHandler={changeHandler}
+        />
       );
     }
     if (type === "text") {
       return (
-        <TextField
-          label={title}
-          variant="outlined"
-          style={{ ...disabledStyle, ...style }}
+        <TextComponent
+          title={title}
+          field={field}
           disabled={disabled}
-          value={state[field.state]}
-          onChange={(e) => {
-            changeHandler({ ...state, [field.state]: e.target.value });
-          }}
+          disabledStyle={disabledStyle}
+          style={style}
+          state={state}
+          changeHandler={changeHandler}
         />
       );
     }
     if (type === "date") {
       return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            label={title}
-            style={{ ...disabledStyle, ...style }}
-            disabled={disabled}
-            value={state[field.state]}
-            onChange={(e) => {
-              changeHandler({ ...state, [field.state]: e });
-            }}
-          />
-        </LocalizationProvider>
+        <DateComponent
+          title={title}
+          field={field}
+          disabled={disabled}
+          style={style}
+          state={state}
+          changeHandler={changeHandler}
+        />
       );
     }
   };

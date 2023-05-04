@@ -15,6 +15,7 @@ const TestingDetails = ({ state, setState }) => {
       changeHandler={setState}
       fields={testingDetailsDefinition}
       title="Testing Details"
+      containerStyles={{ marginTop: "-1rem" }}
     />
   );
 };
