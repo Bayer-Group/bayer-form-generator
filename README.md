@@ -1,5 +1,9 @@
 ## Form Generator
 
+This is a POC repo created with the intention of determining the potential success of a Form Generator.
+
+For questions or status on this project, reach out to Cathy Richards.
+
 ### Supported fields
 
 `title` - the title to be displayed on the component. String.
