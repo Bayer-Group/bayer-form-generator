@@ -27,7 +27,7 @@ const DateExamples = ({ state, setState }) => {
       state={state}
       changeHandler={setState}
       fields={selectExamplesDefinition}
-      title="Select Examples"
+      title="Date Examples"
       containerStyles={{ marginTop: "-1rem" }}
     />
   );
