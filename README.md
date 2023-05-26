@@ -1,8 +1,6 @@
 ## Form Generator
 
-This is a POC repo created with the intention of determining the potential success of a Form Generator.
-
-For questions or status on this project, reach out to Cathy Richards.
+This repo is intended to be used as a form generator for React applications. By creating a JSON object, you can generate a form with various components. Please see the examples folder for code examples, and the exampleForm.js for an example of invoking each example together.
 
 ### Supported fields
 
