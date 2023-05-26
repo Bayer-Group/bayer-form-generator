@@ -4,7 +4,7 @@ This repo is intended to be used as a form generator for React applications. By 
 
 ## Examples
 
-Please see the examples folder for full code examples, and the exampleForm.js for an example of invoking each example together.
+Please see the examples folder for full code examples, and the exampleForm.js for an example of invoking each example together. Additionally, you can run this project with `npm run start` open your browser to `localhost:3000` and see the examples in action, including utilizations of the `hidden` prop.
 
 ### Textbox Example
 
@@ -35,6 +35,135 @@ In this textbox example, we would provide the following JSON to the FormComponen
 ```
 
 ![textbox-example](/images/textbox-example.png)
+
+### Date Example
+
+```
+[
+    {
+      title: "Date",
+      type: "date",
+      state: "dateNormal",
+    },
+    {
+      title: "Date Disabled",
+      type: "date",
+      state: "dateDisabled",
+      disabled: true,
+    },
+    {
+      title: "Date Hidden",
+      type: "date",
+      state: "dateHidden",
+      hidden: state.hideDate,
+    },
+  ];
+```
+
+![date-example](/images/date-example.png)
+
+### Select Example
+
+```
+ [
+    {
+      title: "Select",
+      options: [
+        {
+          label: "Very cool option!!!!",
+          value: "cool",
+        },
+        {
+          label: "Less Cool Option",
+          value: "lessCool",
+        },
+      ],
+      type: "select",
+      state: "selectNormal",
+    },
+    {
+      title: "Select with purple background!",
+      options: [
+        {
+          label: "Very cool option!!!!",
+          value: "cool",
+        },
+        {
+          label: "Less Cool Option",
+          value: "lessCool",
+        },
+      ],
+      type: "select",
+      state: "selectStyled",
+      style: { backgroundColor: "purple" },
+    },
+    {
+      title: "Disabled Select!",
+      options: [
+        {
+          label: "Very cool option!!!!",
+          value: "cool",
+        },
+        {
+          label: "Less Cool Option",
+          value: "lessCool",
+        },
+      ],
+      type: "select",
+      state: "selectDisabled",
+      disabled: true,
+    },
+    {
+      title: "Custom Defined Select",
+      type: "select",
+      componentOverride: (
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            <InputLabel>Custom Defined Select!</InputLabel>
+            <Select
+              label="Custom Defined Select"
+              variant="outlined"
+              style={{ width: "100vh" }}
+              onChange={(e) => {
+                setState({ ...state, owners: e.target.value });
+              }}
+              value={state.selectCustom}
+            >
+              <MenuItem style={{ color: "blue" }} value="cathy">
+                Cathy
+              </MenuItem>
+              <MenuItem style={{ color: "red" }} value="fry">
+                Fry
+              </MenuItem>
+              <MenuItem style={{ color: "green" }} value="lily">
+                Lily
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+      ),
+      state: "owners",
+    },
+    {
+      title: "Hidden Select! Peekaboo!!!",
+      options: [
+        {
+          label: "Very cool option!!!!",
+          value: "cool",
+        },
+        {
+          label: "Less Cool Option",
+          value: "lessCool",
+        },
+      ],
+      type: "select",
+      state: "selectHidden",
+      hidden: state.hideSelect,
+    },
+  ];
+```
+
+![select-example](/images/select-example.png)
 
 ### Using `componentOverride`
 
